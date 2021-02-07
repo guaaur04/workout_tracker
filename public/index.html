@@ -9,8 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
    
 
@@ -18,10 +17,17 @@
 <body>
 
     
-    <h1>My Workout Plan</h1>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo center">Workout Tracker</a>
+        </div>
+      </nav>
 
+<main>
 
-<main class="card">
+<div id="results">All Workouts</div>
+
+<aside class="card">
     <div id="user-input">
         <p>Title</p>
         <input type="text" id="title" />
@@ -29,15 +35,16 @@
       <br>
 
         <p>Workout Details</p>
-
         <textarea id="note"></textarea>
-
-        <a class=" btn-large waves-effect waves-light red" type="submit" name="action"><i class="material-icons">add</i></a>
+        <a class=" btn-small waves-effect waves-light" type="submit" name="action"><i class="material-icons">add</i></a>
 
       </div>
     </div>
+</aside>
 
 </main>
+
+
 
  <!-- Option to create a new workout or continue with a previous workout -->
  <!--Add exercises to prvevious workout plans
