@@ -1,33 +1,35 @@
-//TODO: You will make six more routes. Each will use mongojs methods
-// to interact with your mongoDB database, as instructed below.
-// -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
+const router = require("express").Router();
+const Transaction = require("../models/workout.js");
 
-// 1. Save a workout to the database's collection
-// POST: /submit
-// ===========================================
+router.post("/api/workout", ({ body }, res) => {
+  Transaction.create(body)
+    .then(dbTransaction => {
+      res.json(dbTransaction);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
 
-// 2. Retrieve all workouts from database collection
-// GET: /all
+router.post("/api/workout/bulk", ({ body }, res) => {
+  Transaction.insertMany(body)
+    .then(dbTransaction => {
+      res.json(dbTransaction);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
 
+router.get("/api/workout", (req, res) => {
+  Transaction.find({})
+    .sort({ date: -1 })
+    .then(dbTransaction => {
+      res.json(dbTransaction);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
 
-// 3. Retrieve one note in the database's collection by it's ObjectId
-// TIP: when searching by an id, the id needs to be passed in
-// as (mongojs.ObjectId(IdYouWantToFind))
-// _id: mongojs.ObjectId(req.params.id)
-// GET: /find/:id
-
-
-
-// 4. Update one note in the database's collection by it's ObjectId
-// (remember, mongojs.ObjectId(IdYouWantToFind)
-// POST: /update/:id
-// ================================================================
-
-
-// 5. Delete one note from the database's collection by it's ObjectId
-// (remember, mongojs.ObjectId(IdYouWantToFind)
-
-
-// 6. Clear the entire note collection
-// DELETE: /clearall
-
+module.exports = router;
