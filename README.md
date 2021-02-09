@@ -27,6 +27,7 @@ Handlebars and Materialize CSS, Express web server, MongoDB, Mongoose, deployed 
 
 ## Features
 
+Add, edit, and delete exercises in your online workout planner. 
 
 ## License
 

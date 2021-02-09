@@ -10,5 +10,7 @@ function renderWorkout (){
         
                 })
         })
+
+        $("#excercise").append()
 };
 

@@ -8,7 +8,9 @@ name: String,
 type: String,
 weight: Number,
 sets: Number,
-reps: Number
+reps: Number,
+duration: Number, 
+distance: Number
 
     })
 
