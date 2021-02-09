@@ -6,13 +6,13 @@ const Schema = mongoose.Schema;
 const WorkoutSchema = new Schema({
 
 name: String,
-type: String,
-weight: Number,
-sets: Number,
-reps: Number
+    exercise: [{
+    type: Schema.Types.ObjectId,
+    ref: 'exercise'
+}]
 
     })
 
-const Workout = mongoose.model("Workout", WorkoutSchema)
+const Workout = mongoose.model("exercise", WorkoutSchema)
 
 module.exports = Workout; 

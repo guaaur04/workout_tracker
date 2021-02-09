@@ -17,14 +17,26 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 });
 
 app.post("/submit", ({body}, res) => {
-  Workout.create(user)
-    .then(dbWorkout => {
+  User.create(user)
+    .then(dbUser => {
       res.json(dbUser);
     })
     .catch(err => {
       res.json(err);
     });
 });
+
+app.post("/api/workout", ({ body }, res) => {
+  db.Workout.create(body)
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
+
 
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
