@@ -1,7 +1,7 @@
 const express = require("express");
-const { Workout } = require("../models");
-const router = express.Router();
 const db = require("../models");
+const router = express.Router();
+
 
 
 //Route to index page 

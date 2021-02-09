@@ -1,7 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const { db } = require("./models/workout");
+const { db } = require("./models");
 
 const PORT = process.env.PORT || 3000
 const app = express();
@@ -10,12 +10,19 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-// app.use(require("./routes/api.js"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
+
+router.get("/", (req, res) => {
+  res.send("TEsting If you SEE THIS u r ready");
+})
+
+//SEED DATA
+// const seedWorkouts
+// const seedExersice 
 
 //View workout
 
@@ -30,7 +37,7 @@ app.get('/api/workout', (req, res) => {
   });
 });
 
-//View exercise 
+//View Exercise 
 
 app.get('/api/exercise', (req, res) => {
   db.Exercise.find({})
@@ -57,16 +64,6 @@ app.get('/populatedExercises', (req, res) => {
 
 })
 
-// app.post("/submit", ({ body }, res) => {
-//   User.create(user)
-//     .then(dbUser => {
-//       res.json(dbUser);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
-
 //Create workout
 app.post("/api/workouts", ({ body }, res) => {
   db.Workout.create(body)
@@ -79,13 +76,15 @@ app.post("/api/workouts", ({ body }, res) => {
     });
 });
 
-//Create exercise 
+//Create Exercise 
 app.post('/api/exercise', (req, res) => {
   console.log(req.body);
 
   db.Excercise.create(req.body)
     .then(dbExercise => {
-//Add the exercise to the workout database
+
+
+//Update Workout Database
       db.Workout.findOneAndUpdate({ _id: req.body.workoutId }, { $push: { exercise: dbExercise._id }})
         .then(dbWOrkout => res.send(dbWOrkout))
     })
@@ -94,7 +93,7 @@ app.post('/api/exercise', (req, res) => {
 
 })
 
-//Delete
+//Delete 
 
 app.listen(PORT, function () {
   console.log("App listening on PORT: " + PORT);
