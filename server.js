@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useFindAndModify: false
 });
 
-//View
+//View workout
 
 app.get('/api/workout', (req, res) => {
   db.Workout.find({})
@@ -26,22 +26,39 @@ app.get('/api/workout', (req, res) => {
     })
 })
 
+//View exercise 
+
 app.get('/api/exercise', (req, res) => {
   db.Exercise.find({})
-  .then(dbExercise => {
-    res.json(dbExercise);
-  })
+    .then(dbExercise => {
+      res.json(dbExercise);
+    })
 })
 
-app.post("/submit", ({ body }, res) => {
-  User.create(user)
-    .then(dbUser => {
-      res.json(dbUser);
+//Populate 
+app.get('/populatedExercises', (req, res) => {
+  db.Exercise.find({})
+    .populate('exercise')
+    .then(dbWorkout => {
+      res.json(dbWorkout)
     })
     .catch(err => {
-      res.json(err);
-    });
-});
+      console.log(err)
+      res.send(err);
+    })
+
+})
+
+
+// app.post("/submit", ({ body }, res) => {
+//   User.create(user)
+//     .then(dbUser => {
+//       res.json(dbUser);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
 
 //Create workout
 app.post("/api/workout", ({ body }, res) => {
@@ -55,17 +72,18 @@ app.post("/api/workout", ({ body }, res) => {
     });
 });
 
-//Create exersice 
+//Create exercise 
 app.post('/api/exercise', (req, res) => {
   console.log(req.body);
 
   db.Excercise.create(req.body)
-  .then(dbExercise => {
-    db.Workout.findOneAndUpdate({_id:req.body.workoutId}, {$push: {exercise: dbExercise._id}})
-    .then(dbWorkout => res.send(dbWOrkout))
-  })
+    .then(dbExercise => {
+//Add the exercise to the workout database
+      db.Workout.findOneAndUpdate({ _id: req.body.workoutId }, { $push: { exercise: dbExercise._id }})
+        .then(dbWOrkout => res.send(dbWOrkout))
+    })
 
-  .catch(err => res.json(err))
+    .catch(err => res.json(err))
 
 })
 

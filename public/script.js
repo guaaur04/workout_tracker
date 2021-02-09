@@ -1,15 +1,14 @@
-
-// function renderWorkout (){
-//         $("#days").empty();
-//         $.ajax({
-//                 url:"/populatedworkouts",
-//                 method:"GET",
-//         })
-//         .then(dbData => {
-//                 console.log(dbData)
-//                 dbData.foreach(plan => {
+function renderWorkout (){
+        $("#exercise").empty();
+        $.ajax({
+                url:"/populatedExercises",
+                method:"GET",
+        })
+        .then(dbData => {
+                console.log(dbData)
+                dbData.foreach(plan => {
         
-//                 })
-//         })
-
+                })
+        })
+};
 

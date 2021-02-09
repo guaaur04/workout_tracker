@@ -1,24 +1,25 @@
-// const express = require("express");
-// const router = express.Router();
-// const excercies = require("../models/exercise");
-// const Workout  = require("../models/workout");
+const express = require("express");
+const router = express.Router();
+const db = require("../models");
 
 
-// //router.get
-
-// //View Data 
-
-// //router.get("/add_excercise")
-
-// //router.post("/edit_excercise")
-
-// //router.post("/api/workout")
+//Route to index page 
+router.get("/", (req, res) => {
+    res.send("HELLO");
+});
 
 
-// const router = require("../routes/api");
+//Post Exercise 
+router.post("/exercise", (req,res) => {
+    res.send("HELLO");
+    Exercise.create(req.body).then(data => {
+        res.json(data);
+    }).catch(err => {
+        console.log(err);
+    });
+});
 
-// router.get("/", (req.res) => {
-//     console.log(workout)
-// }
+//Post Workout
 
-// module.exports = router; 
+
+module.exports = router; 
