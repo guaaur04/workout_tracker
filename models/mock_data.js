@@ -1,5 +1,4 @@
 
-
 const excersice = [
 
     {
@@ -12,4 +11,4 @@ reps: "1"
     }
 ]
 
-module.exports = excersice; 
+module.exports = workout; 

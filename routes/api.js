@@ -32,4 +32,7 @@ router.get("/api/workout", (req, res) => {
     });
 });
 
+//app.get /populatedWorkouts 
+//app.post /api/days 
+
 module.exports = router;
