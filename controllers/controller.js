@@ -1,23 +1,24 @@
-const express = require("express");
-const router = express.Router();
-const excercies = require("../models/exercise");
-const workout  = require("../models/workout");
+// const express = require("express");
+// const router = express.Router();
+// const excercies = require("../models/exercise");
+// const Workout  = require("../models/workout");
 
 
+// //router.get
 
-//router.get
+// //View Data 
 
-//router.get("/add_excercise")
+// //router.get("/add_excercise")
 
-//router.post("/edit_excercise")
+// //router.post("/edit_excercise")
 
-//router.post("/api/workout")
+// //router.post("/api/workout")
 
 
-const router = require("../routes/api");
+// const router = require("../routes/api");
 
-router.get("/", (req.res) => {
-    console.log(workout)
-}
+// router.get("/", (req.res) => {
+//     console.log(workout)
+// }
 
-module.exports = router; 
+// module.exports = router; 

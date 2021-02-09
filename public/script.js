@@ -1,8 +1,15 @@
-let db;
-// create a new db request for a "workout" database
 
 // function renderWorkout (){
-        //this will be an AJAX call 
+//         $("#days").empty();
+//         $.ajax({
+//                 url:"/populatedworkouts",
+//                 method:"GET",
+//         })
+//         .then(dbData => {
+//                 console.log(dbData)
+//                 dbData.foreach(plan => {
+        
+//                 })
+//         })
 
-// }
 
