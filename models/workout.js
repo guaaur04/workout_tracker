@@ -13,6 +13,6 @@ name: String,
 
     })
 
-const Workout = mongoose.model("exercise", WorkoutSchema)
+const Workout = mongoose.model("workout", WorkoutSchema)
 
 module.exports = Workout; 

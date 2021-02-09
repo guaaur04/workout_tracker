@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static("public"));
 // app.use(require("./routes/api.js"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
@@ -21,10 +21,14 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 
 app.get('/api/workout', (req, res) => {
   db.Workout.find({})
-    .then(dbWorkouts => {
+    .then(dbWorkout => {
       res.json(dbWorkout);
     })
-})
+    .catch(err => {
+      console.log(err)
+      res.send(err);
+  });
+});
 
 //View exercise 
 
@@ -33,9 +37,13 @@ app.get('/api/exercise', (req, res) => {
     .then(dbExercise => {
       res.json(dbExercise);
     })
-})
+    .catch(err => {
+      console.log(err)
+      res.send(err);
+  });
+});
 
-//Populate 
+//Populated Exercises 
 app.get('/populatedExercises', (req, res) => {
   db.Exercise.find({})
     .populate('exercise')
@@ -49,7 +57,6 @@ app.get('/populatedExercises', (req, res) => {
 
 })
 
-
 // app.post("/submit", ({ body }, res) => {
 //   User.create(user)
 //     .then(dbUser => {
@@ -61,7 +68,7 @@ app.get('/populatedExercises', (req, res) => {
 // });
 
 //Create workout
-app.post("/api/workout", ({ body }, res) => {
+app.post("/api/workouts", ({ body }, res) => {
   db.Workout.create(body)
     .then(dbWorkout => {
       res.json(dbWorkout);
