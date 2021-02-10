@@ -96,6 +96,18 @@ app.get('/api/exercise', (req, res) => {
     });
 });
 
+//Days corresponding to workout 
+app.get('/api/days', (req,res) => {
+  db.Day.find({})
+  .then(dbDay => {
+    res.json(dbDay)
+  })
+  .catch(err => {
+    console.log(err)
+    res.send(err);
+  })
+})
+
 //Populated Exercises 
 app.get('/populatedExercises', (req, res) => {
   db.Exercise.find({})
@@ -110,18 +122,6 @@ app.get('/populatedExercises', (req, res) => {
 
 })
 
-//Days corresponding to workout 
-app.get('/api/days', (req,res) => {
-  db.Day.find({})
-  .then(dbDay => {
-    res.json(dbDay)
-  })
-  .catch(err => {
-    console.log(err)
-    res.send(err);
-  })
-})
-
 //Post to Days
 app.post('/api/days', ({ body }, res) => {
   db.Day.create(body)
@@ -134,7 +134,7 @@ app.post('/api/days', ({ body }, res) => {
   })
 })
 
-//Create workout
+//Create Workout
 app.post("/api/workouts", ({ body }, res) => {
   db.Workout.create(body)
     .then(dbWorkout => {
@@ -149,11 +149,8 @@ app.post("/api/workouts", ({ body }, res) => {
 //Create Exercise 
 app.post('/api/exercise', (req, res) => {
   console.log(req.body);
-
-  db.Excercise.create(req.body)
+   db.Excercise.create(req.body)
     .then(dbExercise => {
-
-
       //Update Workout Database
       db.Workout.findOneAndUpdate({ _id: req.body.workoutId }, { $push: { exercise: dbExercise._id } })
         .then(dbWOrkout => res.send(dbWOrkout))
