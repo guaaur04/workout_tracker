@@ -3,7 +3,6 @@ const db = require("../models");
 const router = express.Router();
 
 
-
 //Route to index page 
 router.get("/", (req, res) => {
     res.send("TEsting If you SEE THIS u r ready");

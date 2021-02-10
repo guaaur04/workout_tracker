@@ -21,9 +21,29 @@ router.get("/", (req, res) => {
 })
 
 //SEED DATA
-// const seedWorkouts
-// const seedExersice 
+const seedWorkouts = [
+  {
+name: "Plank",
+type: "Core",
+weight: 10,
+sets: 3,
+reps: 1,
+duration: 60, 
+distance: 0
+  }, 
 
+  {
+name: "Run",
+type: "Cardio",
+weight: 0,
+sets: 0,
+reps: 0,
+duration: 5, 
+distance: 10
+
+  }
+
+]
 //View workout
 
 app.get('/api/workout', (req, res) => {
