@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutplanner", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 })
 
 //SEED DATA
-const seedWorkouts = [
+const seedExercise = [
   {
     name: "Plank",
     type: "Core",
@@ -44,15 +44,26 @@ const seedWorkouts = [
     duration: 5,
     distance: 10
 
+  },
+
+  {
+    name: "High Kicks",
+    type: "Cardio",
+    weight: 0,
+    sets: 3,
+    reps: 10,
+    duration: 5,
+    distance: 0
+
   }
 ]
 
 //Workout to days of the week
 app.get('/seedplans', (req, res) => {
-  db.Workout.create(seedWorkouts)
+  db.Workout.create(seedExercise)
     .then(result => {
       console.log(result)
-      db.Day.create([
+      db.Workout.create([
         {
           name: 'Monday',
           Workout: [
@@ -157,7 +168,7 @@ app.get('/populatedExercise', (req, res) => {
 // })
 
 //Create Workout
-app.post("/api/workouts", ({ body }, res) => {
+app.post("/api/workout", ({ body }, res) => {
   db.Workout.create(body)
     .then(dbWorkout => {
       res.json(dbWorkout);

@@ -38,15 +38,15 @@ $(document).ready(function () {
                         method: "POST",
                         data:
                         {
-                                name: "#name".val(),
-                                type: "#type".val(),
-                                weight: "#weight".val(),
-                                sets: "#sets".val(),
-                                reps: "#reps".val(),
-                                duration: "#duration".val(),
-                                distance: "#distance".val(),
-                                isCardio: "#exercise-name".val(),
-                        }
+                                name: $("#name").val(),
+                                type: $("#type").val(),
+                                weight: $("#weight").val(),
+                                sets: $("#sets").val(),
+                                reps: $("#reps").val(),
+                                duration: $("#duration").val(),
+                                distance: $("#distance").val(),
+                                // isCardio: "".val(),
+                        },
                 })
                         .then(dbWorkout => {
                                 console.log(dbWorkout)
