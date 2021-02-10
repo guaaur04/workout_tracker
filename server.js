@@ -129,8 +129,8 @@ app.get('/api/exercise', (req, res) => {
 // })
 
 //Populated Exercises 
-app.get('/populatedExercises', (req, res) => {
-  db.Exercise.find({})
+app.get('/populatedExercise', (req, res) => {
+  db.Workout.find({})
     .populate('exercise')
     .then(dbWorkout => {
       res.json(dbWorkout)

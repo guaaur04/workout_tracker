@@ -1,19 +1,20 @@
-// function renderWorkoutplants (){
-//         $("#days").empty();
-//         $.ajax({
-//                 url:"/populatedExercises",
-//                 method:"GET",
-//         })
-//         .then(dbData => {
-//                 console.log(dbData)
-//                 dbData.foreach(plan => {
+function renderWorkoutplans (){
+        $("#workouts").empty();
+        $.ajax({
+                url:"/populatedExercises",
+                method:"GET",
+        })
+        .then(dbWorkout => {
+                console.log(dbWorkout)
+                dbWorkout.forEach(day => {
         
-//                 })
-//         })
-//         $("#excercise").append()
-// };
+                })
+};
 
-//Sumbit 
+//Loop through excercise and print each 
+
+
+//Sumbit Form/Button
 $("#submit-btn").on("click", function (event) {
         event.preventDefault();
         $.ajax({
@@ -30,6 +31,9 @@ $("#submit-btn").on("click", function (event) {
                 distance: "#distance".val(),
                 isCardio: "#exercise-name".val(),
                 }
+        })
+         .then(renderWorkoutplans())
                 
 })
+
 });
