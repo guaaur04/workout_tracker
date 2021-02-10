@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 function renderWorkoutplans (){
         $("#workouts").empty();
         $.ajax({
@@ -6,10 +8,22 @@ function renderWorkoutplans (){
         })
         .then(dbWorkout => {
                 console.log(dbWorkout)
-                dbWorkout.forEach(day => {
+                dbWorkout.forEach((excercise) => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML =`
+                        <td>${excercise.name}</td>
+                        <td>${excercise.type}</td>
+                        <td>${excercise.weight}</td>
+                        <td>${excercise.sets}</td>
+                        <td>${excercise.reps}</td>
+                        <td>${excercise.duration}</td>
+                        <td>${excercise.distance}</td>`;
+
+                        tbody.appendChild(tr);
+                });
         
-                })
-};
+                }
+});
 
 //Loop through excercise and print each 
 
@@ -37,3 +51,4 @@ $("#submit-btn").on("click", function (event) {
 })
 
 });
+};
