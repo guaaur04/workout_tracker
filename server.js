@@ -47,7 +47,7 @@ const seedWorkouts = [
 
 //Workout to days of the week
 app.get('/seedplans', (req, res) => {
-  db.Workout.create(seedWorkout)
+  db.Workout.create(seedWorkouts)
     .then(result => {
       console.log(result)
       db.Day.create([
@@ -59,6 +59,26 @@ app.get('/seedplans', (req, res) => {
             result[Math.floor(Math.random() * result.length)]._id
           ]
         },
+
+        {
+          name: 'Tuesday',
+          Workout: [
+            result[Math.floor(Math.random() * result.length)]._id,
+            result[Math.floor(Math.random() * result.length)]._id,
+            result[Math.floor(Math.random() * result.length)]._id
+          ]
+        },
+
+        {
+          name: 'Wednesday',
+          Workout: [
+            result[Math.floor(Math.random() * result.length)]._id,
+            result[Math.floor(Math.random() * result.length)]._id,
+            result[Math.floor(Math.random() * result.length)]._id
+          ]
+        },
+
+
       ])
         .then(fullRes => {
           res.json(fullRes)
@@ -97,16 +117,16 @@ app.get('/api/exercise', (req, res) => {
 });
 
 //Days corresponding to workout 
-app.get('/api/days', (req,res) => {
-  db.Day.find({})
-  .then(dbDay => {
-    res.json(dbDay)
-  })
-  .catch(err => {
-    console.log(err)
-    res.send(err);
-  })
-})
+// app.get('/api/days', (req,res) => {
+//   db.Day.find({})
+//   .then(dbDay => {
+//     res.json(dbDay)
+//   })
+//   .catch(err => {
+//     console.log(err)
+//     res.send(err);
+//   })
+// })
 
 //Populated Exercises 
 app.get('/populatedExercises', (req, res) => {
@@ -123,16 +143,16 @@ app.get('/populatedExercises', (req, res) => {
 })
 
 //Post to Days
-app.post('/api/days', ({ body }, res) => {
-  db.Day.create(body)
-  .then(dbDay => {
-    res.json(dbDay)
-  })
-  .catch(err => {
-    console.log(err)
-    res.send(err);
-  })
-})
+// app.post('/api/days', ({ body }, res) => {
+//   db.Day.create(body)
+//   .then(dbDay => {
+//     res.json(dbDay)
+//   })
+//   .catch(err => {
+//     console.log(err)
+//     res.send(err);
+//   })
+// })
 
 //Create Workout
 app.post("/api/workouts", ({ body }, res) => {
@@ -147,12 +167,14 @@ app.post("/api/workouts", ({ body }, res) => {
 });
 
 //Create Exercise 
-app.post('/api/exercise', (req, res) => {
-  console.log(req.body);
-   db.Excercise.create(req.body)
+app.post('/api/exercise', ({body}, res) => {
+  console.log(body);
+   db.Exercise.create(body)
     .then(dbExercise => {
       //Update Workout Database
-      db.Workout.findOneAndUpdate({ _id: req.body.workoutId }, { $push: { exercise: dbExercise._id } })
+      // console.log(dbExercise._id)
+      db.Workout.findByIdAndUpdate(body.id, { $push: { exercise: dbExercise._id } })
+      // db.Workout.findById("6023517cb51af13030a8e2bd")
         .then(dbWOrkout => res.send(dbWOrkout))
     })
 
