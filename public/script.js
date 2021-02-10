@@ -1,15 +1,15 @@
 $(document).ready(function () {
 
         function renderWorkoutplans() {
-                const workouts = document.querySelector('#workouts');
-                // $("#workouts").empty();
+                $("#workouts").empty();
                 $.ajax({
-                        url: "/populatedExercise",
+                        url: "/api/exercise",
                         method: "GET",
                 })
                         .then(dbWorkout => {
                                 console.log(dbWorkout)
                                 dbWorkout.forEach((exercise) => {
+                                        const workouts = document.querySelector('#my-workouts');
                                         const ul = document.createElement('ul');
                                         ul.innerHTML = `
                         <li>${exercise.name}</li>
