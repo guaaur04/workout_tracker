@@ -1,5 +1,5 @@
-function renderWorkout (){
-        $("#exercise").empty();
+function renderWorkoutplants (){
+        $("#days").empty();
         $.ajax({
                 url:"/populatedExercises",
                 method:"GET",
@@ -10,7 +10,7 @@ function renderWorkout (){
         
                 })
         })
-
+        
         $("#excercise").append()
 };
 

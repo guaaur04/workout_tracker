@@ -162,7 +162,6 @@ app.post('/api/exercise', (req, res) => {
 
 //Delete 
 
-
 app.listen(PORT, function () {
   console.log("App listening on PORT: " + PORT);
 });

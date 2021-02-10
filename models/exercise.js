@@ -6,11 +6,12 @@ const ExerciseSchema = new Schema({
 
 name: String,
 type: String,
-weight: Number,
+weight: String,
 sets: Number,
 reps: Number,
-duration: Number, 
-distance: Number
+duration: String, 
+distance: String,
+isCardio: Boolean
 
     })
 
