@@ -5,12 +5,6 @@
  Let's get pumped 💪🏽👊🏽
 --------
 
-## Links
-
-Live site: 
-
-Github: https://github.com/guaaur04/workout_tracker
-
 ## User Story
 As a user, I want to be able to view create and track daily workouts.
 
