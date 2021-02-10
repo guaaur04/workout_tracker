@@ -7,7 +7,6 @@
 
 ## Links
 
-Live site: 
 
 Github: https://github.com/guaaur04/workout_tracker
 
