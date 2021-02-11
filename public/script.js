@@ -38,6 +38,16 @@ renderWorkoutplans();
 //Sumbit Form/Button
 $("#submit-btn").on("click", function (event) {
         event.preventDefault();
+        console.log("Input Data", {
+                name: $("#name").val(),
+                type: $("#type").val(),
+                weight: $("#weight").val(),
+                sets: $("#sets").val(),
+                reps: $("#reps").val(),
+                duration: $("#duration").val(),
+                distance: $("#distance").val(),
+                // isCardio: "".val(),
+        })
         $.ajax({
                 url: "/api/exercise",
                 method: "POST",
@@ -54,7 +64,7 @@ $("#submit-btn").on("click", function (event) {
                 },
         })
                 .then(dbWorkout => {
-                        console.log(dbWorkout)
+                        console.log("Add route",dbWorkout)
                         renderWorkoutplans();
 
                 });
