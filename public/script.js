@@ -12,16 +12,18 @@ $(document).ready(function () {
                                         const workouts = document.querySelector('#my-workouts');
                                         const ul = document.createElement('ul');
                                         ul.innerHTML = `
-                        <li>${exercise.name}</li>
-                        <li>${exercise.type}</li>
-                        <li>${exercise.weight}</li>
-                        <li>${exercise.sets}</li>
-                        <li>${exercise.reps}</li>
-                        <li>${exercise.duration}</li>
-                        <li>${exercise.distance}</li>
+                                        <li>Ex
+                        <li>Exercise name:${exercise.name}</li>
+                        <li>Exercise Type:${exercise.type}</li>
+                        <li>Weight: ${exercise.weight}</li>
+                        <li>Sets : ${exercise.sets}</li>
+                        <li>Reps: ${exercise.reps}</li>
+                        <li>Duration : ${exercise.duration}</li>
+                        <li>Distance :${exercise.distance}</li>
                         `;
 
-                       workouts.appendChild(ul);});
+                                        workouts.appendChild(ul);
+                                });
 
                         })
         }
