@@ -8,24 +8,24 @@ $(document).ready(function () {
                 })
                         .then(dbWorkout => {
                                 console.log(dbWorkout)
-                                if (dbWorkout.length !== 0) {
-                                        dbWorkout.forEach((exercise) => {
-                                                const workouts = document.querySelector('#my-workouts');
-                                                const ul = document.createElement('ul');
-                                                ul.innerHTML = `
-                                        <li>Ex
-                                                <li>Exercise name:${exercise.name}</li>
-                                                <li>Exercise Type:${exercise.type}</li>
-                                                <li>Weight: ${exercise.weight}</li>
-                                                <li>Sets : ${exercise.sets}</li>
-                                                <li>Reps: ${exercise.reps}</li>
-                                                <li>Duration : ${exercise.duration}</li>
-                                                <li>Distance :${exercise.distance}</li>
-                                       `;
+                                // if (dbWorkout.length !== 0) {
+                                //         dbWorkout.forEach((exercise) => {
+                                //                 const workouts = document.querySelector('#my-workouts');
+                                //                 const ul = document.createElement('ul');
+                                //                 ul.innerHTML = `
+                                //         <li>Ex
+                                //                 <li>Exercise name:${exercise.name}</li>
+                                //                 <li>Exercise Type:${exercise.type}</li>
+                                //                 <li>Weight: ${exercise.weight}</li>
+                                //                 <li>Sets : ${exercise.sets}</li>
+                                //                 <li>Reps: ${exercise.reps}</li>
+                                //                 <li>Duration : ${exercise.duration}</li>
+                                //                 <li>Distance :${exercise.distance}</li>
+                                //        `;
  
-                                                workouts.appendChild(ul);
+                                //                 workouts.appendChild(ul);
                                         
-                                });
+                                // });
                         }
 
         })
