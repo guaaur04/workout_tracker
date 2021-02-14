@@ -10,6 +10,7 @@ $(document).ready(function () {
                                 console.log(dbWorkout)
                                 if (dbWorkout.length !== 0) {
                                         dbWorkout.forEach((exercise) => {
+
                                                 const workouts = document.querySelector('#my-workouts');
                                                 const ul = document.createElement('ul');
                                                 ul.innerHTML = `
@@ -22,7 +23,7 @@ $(document).ready(function () {
                                                 <li>Duration : ${exercise.duration}</li>
                                                 <li>Distance :${exercise.distance}</li>
                                        `;
- 
+                                                //newcard.appendChild(newCard);
                                                 workouts.appendChild(ul);
                                         
                                 });   
@@ -34,6 +35,7 @@ $(document).ready(function () {
 renderWorkoutplans();
 
 //Loop through excercise and print each 
+
 
 //Sumbit Form/Button
 $("#submit-btn").on("click", function (event) {
