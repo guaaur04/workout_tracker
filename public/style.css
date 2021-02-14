@@ -1,14 +1,19 @@
 
-/* nav {
+nav {
   background-color: #086788 !important;
-} */
+}
 
 
-/* .card{
+.row{
+justify-content: flex;
+display: flex;
+}
+
+.card{
     margin: auto;
     text-align: center;
-    justify-self: center;
+    padding: 0 20px;
     
-    } */
+    }
 
     

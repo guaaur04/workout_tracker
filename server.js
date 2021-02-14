@@ -91,7 +91,7 @@ app.get('/seedplans', (req, res) => {
           ]
         },
 
-
+        
       ])
         .then(fullRes => {
           res.json(fullRes)
@@ -164,8 +164,8 @@ app.get('/populatedExercise', (req, res) => {
 //   .catch(err => {
 //     console.log(err)
 //     res.send(err);
-//   })
-// })
+//   });
+// });
 
 //Create Workout
 app.post("/api/workout", ({ body }, res) => {
@@ -184,7 +184,6 @@ app.post('/api/exercise', ({body}, res) => {
   console.log(body);
    db.Exercise.create(body)
     .then(dbExercise => {
-      //Update Workout Database
       // console.log(dbExercise._id)
       db.Workout.findByIdAndUpdate(body.id, { $push: { exercise: dbExercise._id } })
       // db.Workout.findById("6023517cb51af13030a8e2bd")
