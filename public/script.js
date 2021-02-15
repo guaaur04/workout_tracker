@@ -1,4 +1,3 @@
-const Exercise = require("../models/exercise");
 
 $(document).ready(function () {
 
@@ -87,147 +86,161 @@ $(document).ready(function () {
         //I'm writing this to test deploy !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         function renderWorkoutplans() {
-                $("#weeks").empty();
+                $("#workouts").empty();
                 $.ajax({
-                        url: "/populatedworkouts",
+                        url: "/api/exercise",
                         method: "GET",
                 })
                         .then(dbWorkout => {
                                 console.log(dbWorkout)
-                                dbWorkout.forEach(exercise => {
-                                        // make a new div each workout
-                                        const newDiv = $("<div>", {
-                                                style: 'width: 25%; border: 2px solid blue',
+                                dbWorkout.forEach((workout) => {
+                                        // Make a new div each workout
+                                        const newDiv = $('<div>', {
+                                                style: 'width: 25%; border: 2px solid blue;',
+
                                         })
                                         const title = $("<h3>", {
-                                                text: exercise.name
+                                                text: workout.name
                                         })
                                         const newUl = $("<ul>", { text: 'Exercises' })
                                         newDiv.append(title)
 
 
-                                        // loop through meals and print each
-                                        exercise.workouts.forEach(exercise => {
-                                                const newLi = $("<li>", {
-                                                        text: `Name: ${exercise.name}\nType: ${exercise.type}\nSets: ${exercise.weight }\nReps: ${exercise.reps}\nDuration: ${exercise.duration}\nDistance: ${exercise.distance}\nIs it cardio? ${exercise.isCardio? "Yes" : "No"}
+
+                                        if (dbWorkout.length !== 0) {
+                                                dbWorkout.forEach((exercise) => {
+                                                        const newLi = $("<li>", {
+                                                                text: `Name: ${exercise.name} \n Type: ${exercise.type} \n Sets: ${exercise.weight}\n Reps: ${exercise.reps}\n Duration: ${exercise.duration}\n Distance: ${exercise.distance}\n Is it cardio? ${exercise.isCardio ? "Yes" : "No"}
                                                         `
+                                                        })
+                                                        newUl.append(newLi);
                                                 })
-                                                newUl.append(newLi);
-                                        })
-                                        // FORM TO ADD NEW MEALS TO THE WEEK
-                                        const newForm = $("<form>", {
-                                                id: exercise._id
-                                        })
-                                        const newBtn = $("<button>", {
-                                                text: 'Add exercise',
-                                                class: 'update-btn',
-                                                'data-id': exercise._id
-                                        })
-                                        const nameInput = $("<input>", {
-                                                type: 'text',
-                                                id: `name-${exercise._id}`,
-                                                placeholder: 'Exercise Name'
-                                        })
-                                        const typeInput = $("<label>", {
-                                                type: 'text',
-                                                for: `serving-${exercise._id}`,
-                                                text: 'Number of servings: '
-                                        })
-                                        const weightInput = $("<input>", {
-                                                type: 'number',
-                                                id: `serving-${exercise._id}`
-                                        })
+                                                // Form: Add Workouts to Workout Days
+                                                const newForm = $("<form>", {
+                                                        id: workout._id
+                                                })
+                                                const newBtn = $("<button>", {
+                                                        text: 'Add exercise',
+                                                        class: 'update-btn',
+                                                        'data-id': workout._id
+                                                })
+                                                const nameInput = $("<input>", {
+                                                        type: 'text',
+                                                        id: `name-${workout._id}`,
+                                                        placeholder: 'Exercise Name'
+                                                })
+                                                const typeInput = $("<input>", {
+                                                        type: 'text',
+                                                        for: `Type-${workout._id}`,
+                                                        text: 'Type',
+                                                        placeholder: 'Type'
+                                                })
+                                                const weightInput = $("<input>", {
+                                                        type: 'number',
+                                                        id: `Weight-${workout._id}`,
+                                                        placeholder: 'Weight'
+                                                })
 
-                                        const setsInput = $("<input>", {
-                                                type: 'number',
-                                                id: `serving-${exercise._id}`
-                                        })
+                                                const setsInput = $("<input>", {
+                                                        type: 'number',
+                                                        id: `Sets-${workout._id}`,
+                                                        placeholder: 'Sets'
+                                                })
 
-                                        const repsInput = $("<input>", {
-                                                type: 'number',
-                                                id: `serving-${exercise._id}`
-                                        })
+                                                const repsInput = $("<input>", {
+                                                        type: 'number',
+                                                        id: `Reps-${workout._id}`,
+                                                        placeholder: 'Reps'
+                                                })
+
+
+                                                const durationInput = $("<input>", {
+                                                        type: 'number',
+                                                        id: `Duration-${workout._id}`,
+                                                        placeholder: 'Duration'
+                                                })
+
+                                                const distanceInput = $("<input>", {
+                                                        type: 'text',
+                                                        id: `Distace-${workout._id}`,
+                                                        placeholder: 'Distance'
+                                                })
+
+                                                const cardioLabel = $("<input>", {
+                                                        type: 'checkbox',
+                                                        id: `Cardio-${workout._id}`,
+                                                        placeholder: 'Is it cardio?'
+                                                        
+                                                })
+
+                                                newForm
+                                                        .append(nameInput)
+                                                        .append(typeInput)
+                                                        .append(weightInput)
+                                                        .append(setsInput)
+                                                        .append(repsInput)
+                                                        .append(durationInput)
+                                                        .append(distanceInput)
+                                                        .append(cardioLabel)
+                                                        .append(newBtn)
+
+                                                newDiv
+                                                        .append(newUl)
+                                                        .append(newForm);
+
+
+                                                $("#workouts").append(newDiv);
+                                        }
+
                 
-                
-                                        const durationInput = $("<input>", {
-                                                type: 'number',
-                                                id: `tasty-${exercise._id}`
-                                        })
-                                
-                                        const distanceInput = $("<input>", {
-                                                type: 'checkbox',
-                                                id: `hotdog-${exercise._id}`
-                                        })
-
-                                        const cardioLabel = $("<input>", {
-                                                type: 'checkbox',
-                                                id: `Cardio-${exercise._id}`
-                                        })
-
-                                        newForm
-                                                .append(nameInput)
-                                                .append(typeInput)
-                                                .append(weightInput)
-                                                .append(setsInput)
-                                                .append(repsInput)
-                                                .append(durationInput)
-                                                .append(distanceInput)
-                                                .append(cardioLabel)
-                                                .append(newBtn)
-
-                                        newDiv
-                                                .append(newUl)
-                                                .append(newForm);
-
-
-                                        $("#workouts").append(newDiv);
                                 })
                         })
-        }
-        renderWorkoutplans();
-
-        $("#new-workout").on('submit', (e) => {
-                e.preventDefault();
-                const workoutname = $("#workout-name").val().trim();
-                console.log(workoutname);
-                $.ajax({
-                        url: "/api/weeks",
-                        method: "POST",
-                        data: { name: workoutname }
-                })
-                        .then(renderWorkoutplans())
-        })
-
-        $("#workouts").on('click', ".update-btn", (e) => {
-                e.preventDefault();
-                const workoutId = e.target.dataset.id;
-                console.log(workoutId);
-                const name = $(`#name-${workoutId}`).val().trim();
-                const type = parseInt($(`#type-${workoutId}`).val());
-                const weight = parseInt($(`#weight-${workoutId}`).val());
-                const sets = parseInt($(`#sets-${workoutId}`).val());
-                const reps = parseInt($(`#reps-${workoutId}`).val());
-                const duration = parseInt($(`#duration-${workoutId}`).val());
-                const distance = parseInt($(`#distance-${workoutId}`).val());
-                const isCardio = $(`#cardio-${weekId}`).is(":checked");
-
-                const newObj = {
-                        name, type, weight, sets, reps, duration, distance, isCardio, workoutId
                 }
+                renderWorkoutplans();
 
-                console.log(newObj);
-
-                $.ajax({
-                        url: "/api/workouts",
-                        method: "POST",
-                        data: newObj
+                $("#new-workout").on('submit', (e) => {
+                        e.preventDefault();
+                        const workoutname = $("#workout-name").val().trim();
+                        console.log(workoutname);
+                        $.ajax({
+                                url: "/api/exercise",
+                                method: "POST",
+                                data: { name: workoutname }
+                        })
+                                .then(renderWorkoutplans())
                 })
-                        .then(dbWorkout => {
-                                console.log(dbWorkout)
-                                renderWorkoutplans();
-                        })
-                        .catch(err => {
-                                console.log(err);
-                        })
 
-        })
+                $("#workouts").on('click', ".update-btn", (e) => {
+                        e.preventDefault();
+                        const workoutId = e.target.dataset.id;
+                        console.log(workoutId);
+                        const name = $(`#name-${workoutId}`).val().trim();
+                        const type = parseInt($(`#type-${workoutId}`).val());
+                        const weight = parseInt($(`#weight-${workoutId}`).val());
+                        const sets = parseInt($(`#sets-${workoutId}`).val());
+                        const reps = parseInt($(`#reps-${workoutId}`).val());
+                        const duration = parseInt($(`#duration-${workoutId}`).val());
+                        const distance = parseInt($(`#distance-${workoutId}`).val());
+                        const isCardio = $(`#cardio-${workoutId}`).is(":checked");
+
+                        const newObj = {
+                                name, type, weight, sets, reps, duration, distance, isCardio, workoutId
+                        }
+
+                        console.log(newObj);
+
+                        $.ajax({
+                                url: "/api/exercise",
+                                method: "POST",
+                                data: newObj
+                        })
+                                .then(dbWorkout => {
+                                        console.log(dbWorkout)
+                                        renderWorkoutplans();
+                                })
+                                .catch(err => {
+                                        console.log(err);
+                                })
+
+                })
+        });

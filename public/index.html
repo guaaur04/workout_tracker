@@ -38,17 +38,17 @@
 
     <!--Render all workouts-->
     <!----->
-    <div class="row" id="day">
+    <!-- <div class="row" id="day">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1 workout-card">
-          <div class="card-content white-text">
+          <div class="card-content white-text"> -->
 
             <!--The card title is the day of the week-->
 
             <span class="card-title"></span>
 
             <!--Render the workout exercises and corresponding details-->
-            <div id="#workouts">
+            <!-- <div id="#workouts">
               <ul id="my-workouts">
                 
                 <li></li>
@@ -70,8 +70,8 @@
       <h2>Add an exercise to your Workout Tracker</h2>
     </div>
 
-    <!--Create new Excercise form-->
-    <form class="card workout-form">
+    <!-Create new Excercise form-->
+    <!-- <form class="card workout-form">
       <div id="user-input">
 
         <div class="row">
@@ -115,10 +115,8 @@
             <label for="duration">Duration</label>
           </div>
         </div>
-
-        <!--Add Distance/Cardio-->
     </form>
-    </div>
+    </div> --> 
 
     <!--Submit new Exercise button-->
     <a class=" btn-small waves-effect waves-light" type="submit" name="action" id="submit-btn">
@@ -132,6 +130,15 @@
 
   <!-- Option to create a new workout or continue with a previous workout -->
 
+
+
+  <form id="new-workout" class="form">
+    <input type="text" name="workout-name" id="workout-name" placeholder="new week name...">
+    <input type="submit" value="Add Workout">
+</form>
+
+<div id="workouts" class="workout-card" style="display: flex; flex-wrap: wrap; justify-content: space-around; width: 80%;">
+  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

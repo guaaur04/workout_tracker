@@ -63,13 +63,13 @@ const seedExercise = [
 
 //Workout to days of the week
 app.get('/seedplans', (req, res) => {
-  db.Workout.create(seedExercise)
+  db.Exercise.create(seedExercise)
     .then(result => {
       console.log(result)
       db.Workout.create([
         {
           name: 'Monday',
-          Workout: [
+          exercise: [
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id
@@ -78,7 +78,7 @@ app.get('/seedplans', (req, res) => {
 
         {
           name: 'Tuesday',
-          Workout: [
+          exercise: [
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id
@@ -87,7 +87,7 @@ app.get('/seedplans', (req, res) => {
 
         {
           name: 'Wednesday',
-          Workout: [
+          exercise: [
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id
@@ -96,7 +96,7 @@ app.get('/seedplans', (req, res) => {
 
         {
           name: 'Thursday',
-          Workout: [
+          exercise: [
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id
@@ -105,7 +105,7 @@ app.get('/seedplans', (req, res) => {
 
         {
           name: 'Friday',
-          Workout: [
+          exercise: [
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id,
             result[Math.floor(Math.random() * result.length)]._id
@@ -175,16 +175,16 @@ app.get('/populatedExercise', (req, res) => {
 })
 
 //Post to Days
-app.post('/api/days', ({ body }, res) => {
-  db.Workout.create(body)
-  .then(dbDay => {
-    res.json(dbDay)
-  })
-  .catch(err => {
-    console.log(err)
-    res.send(err);
-  })
-})
+// app.post('/api/days', ({ body }, res) => {
+//   db.Workout.create(body)
+//   .then(dbDay => {
+//     res.json(dbDay)
+//   })
+//   .catch(err => {
+//     console.log(err)
+//     res.send(err);
+//   })
+// })
 
 //Create Workout
 app.post("/api/workout", ({ body }, res) => {
@@ -213,8 +213,6 @@ app.post('/api/exercise', ({ body }, res) => {
     .catch(err => res.json(err))
 
 })
-
-//Delete 
 
 app.listen(PORT, function () {
   console.log("App listening on PORT: " + PORT);
