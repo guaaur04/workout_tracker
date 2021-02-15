@@ -113,14 +113,16 @@ $(document).ready(function () {
                                                                 text: `Name: ${exercise.name} \n Type: ${exercise.type} \n Sets: ${exercise.weight}\n Reps: ${exercise.reps}\n Duration: ${exercise.duration}\n Distance: ${exercise.distance}\n Is it cardio? ${exercise.isCardio ? "Yes" : "No"}
                                                         `
                                                         })
+                                                
                                                         newUl.append(newLi);
                                                 })
+                                                
                                                 // Form: Add Workouts to Workout Days
                                                 const newForm = $("<form>", {
                                                         id: workout._id
                                                 })
                                                 const newBtn = $("<button>", {
-                                                        text: 'Add exercise',
+                                                        text: 'Add Exercise',
                                                         class: 'update-btn',
                                                         'data-id': workout._id
                                                 })

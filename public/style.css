@@ -1,5 +1,5 @@
 body{
-  background-color: palegreen;
+  background-color: rgb(50,50,50);
   /* background-image: url("https://images.unsplash.com/photo-1517931524326-bdd55a541177?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
   background-size: contain; */
 }
@@ -10,13 +10,13 @@ nav {
 }
 
 .brand-logo{
-font-size: x-small;
+font-size: 100px;
 justify-content: center;
 }
 
 h1 {
-  margin: auto;
-  align-items: center;
+  margin-left: 15rem;
+  
 }
 .row{
 justify-content: flex;
@@ -28,9 +28,12 @@ display: flex;
     padding: 0 10px;
     display: flex;
     border: 3px solid;
-    background-color: slategray;
+    background-color:#A3C4BC;
     font-size: 12px;
+    color: black; 
     }
+
+
 
   div {
    justify-content: space-between;
@@ -39,3 +42,44 @@ display: flex;
   li {
     justify-content: space-evenly;
   }
+
+  .input-field input:focus + label {
+    color: white !important;
+    background-color: rgb(50,50,50);
+  }
+ 
+  .input-field input:focus {
+    border-radius: 0.2rem;
+    background-color: rgb(50,50,50);
+  }
+  .input-field { 
+    border:none;
+    padding: 1rem;
+
+    color: white; 
+    background-color: rgb(50,50,50);
+  }
+  .update-btn {
+    box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color:#3d94f6;
+    border-radius:6px;
+    border:1px solid #337fed;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1570cd;
+  }
+  .update-btn:hover {
+    background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+    background-color:#1e62d0;
+  }
+  .update-btn:active {
+    position:relative;
+    top:1px;
+  }
+  

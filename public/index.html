@@ -23,118 +23,16 @@
   <div>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">Workout Tracker</a>
+      <a href="#" class="brand-logo center">
+        <p class="nav-title">Workout Tracker</p</a>
     </div>
   </nav>
 </div>
 
-  <!--Add exercises to previous workout plans
-  Add new exercises to a new workout plan-->
+  <form id="new-workout" class="input-field">
+    <input type="text" name="workout-name" id="workout-name"  class= "new-workout-form" placeholder="New Workout Plan">
 
-  <main>
-    <div class="header">
-      <h1>All Workouts</h1>
-    </div>
-
-    <!--Render all workouts-->
-    <!----->
-    <!-- <div class="row" id="day">
-      <div class="col s12 m6">
-        <div class="card blue-grey darken-1 workout-card">
-          <div class="card-content white-text"> -->
-
-            <!--The card title is the day of the week-->
-
-            <span class="card-title"></span>
-
-            <!--Render the workout exercises and corresponding details-->
-            <!-- <div id="#workouts">
-              <ul id="my-workouts">
-                
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="header">
-      <h2>Add an exercise to your Workout Tracker</h2>
-    </div>
-
-    <!-Create new Excercise form-->
-    <!-- <form class="card workout-form">
-      <div id="user-input">
-
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="name" type="text" class="validate">
-                <label for="name">Exercise Name</label>
-              </div>
-
-              <div class="input-field col s12">
-                <input id="type" type="text" class="validate">
-                <label for="type">Type</label>
-              </div>
-            </div>
-
-
-            <div class="input-field col s12">
-              <input id="weight" type="text" class="validate">
-              <label for="weight">Weight</label>
-            </div>
-        </div>
-
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="sets" type="text" class="validate">
-            <label for="sets">Sets</label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="reps" type="text" class="validate">
-            <label for="reps">Reps</label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="duration" type="text" class="validate">
-            <label for="duration">Duration</label>
-          </div>
-        </div>
-    </form>
-    </div> --> 
-
-    <!--Submit new Exercise button-->
-    <a class=" btn-small waves-effect waves-light" type="submit" name="action" id="submit-btn">
-      Add</a>
-
-    </div>
-    </div>
-    </form>
-
-  </main>
-
-  <!-- Option to create a new workout or continue with a previous workout -->
-
-
-
-  <form id="new-workout" class="form">
-    <input type="text" name="workout-name" id="workout-name" placeholder="new week name...">
-    <input type="submit" value="Add Workout">
+    <input type="submit" value="Add Workout" class="update-btn"></input>
 </form>
 
 <div id="workouts" class="workout-card" style="display: flex; flex-wrap: wrap; justify-content: space-around; width: 80%;">
