@@ -1,90 +1,6 @@
 
 $(document).ready(function () {
 
-        //         function renderWorkoutplans() {
-        //                 $("#workouts").empty();
-        //                 $.ajax({
-        //                         url: "/api/exercise",
-        //                         method: "GET",
-        //                 })
-        //                         .then(dbWorkout => {
-        //                                 console.log(dbWorkout)
-        //                                 if (dbWorkout.length !== 0) {
-        //                                         dbWorkout.forEach((exercise) => {
-
-        //                                                 const workouts = document.querySelector('#my-workouts');
-        //                                                 const ul = document.createElement('ul');
-        //                                                 ul.innerHTML = `
-        //                                         <li>
-        //                                                 <li>Exercise name:${exercise.name}</li>
-        //                                                 <li>Exercise Type:${exercise.type}</li>
-        //                                                 <li>Weight: ${exercise.weight}</li>
-        //                                                 <li>Sets : ${exercise.sets}</li>
-        //                                                 <li>Reps: ${exercise.reps}</li>
-        //                                                 <li>Duration : ${exercise.duration}</li>
-        //                                                 <li>Distance :${exercise.distance}</li>
-        //                                        `;
-        //                                                 //newcard.appendChild(newCard);
-        //                                                 workouts.appendChild(ul);
-
-        //                                         });
-        //                                 }
-
-        //                         })
-        //         }
-
-        //         renderWorkoutplans();
-
-        //         //Sumbit Form/Button
-        //         $("#submit-btn").on("click", function (event) {
-        //                 event.preventDefault();
-        //                 console.log("Input Data", {
-        //                         name: $("#name").val(),
-        //                         type: $("#type").val(),
-        //                         weight: $("#weight").val(),
-        //                         sets: $("#sets").val(),
-        //                         reps: $("#reps").val(),
-        //                         duration: $("#duration").val(),
-        //                         distance: $("#distance").val(),
-        //                         // isCardio: "".val(),
-        //                 })
-        //                 $.ajax({
-        //                         url: "/api/exercise",
-        //                         method: "POST",
-        //                         data:
-        //                         {
-        //                                 name: $("#name").val(),
-        //                                 type: $("#type").val(),
-        //                                 weight: $("#weight").val(),
-        //                                 sets: $("#sets").val(),
-        //                                 reps: $("#reps").val(),
-        //                                 duration: $("#duration").val(),
-        //                                 distance: $("#distance").val(),
-        //                                 // isCardio: "".val(),
-        //                         },
-        //                 })
-        //                         .then(dbWorkout => {
-        //                                 console.log("Add route", dbWorkout)
-        //                                 renderWorkoutplans();
-
-        //                         });
-
-        //         });
-
-        //         // //CREATE A NEW CARD 
-        //         // function populateCard() {
-        //         //         const card = document.querySelector('#day');
-        //         //         newCard.appendChild(renderWorkoutplans())
-        //         // };
-
-        //         parentElement = document.querySelector('#day');
-        //         console.log(parentElement);
-
-
-        // });
-
-        //I'm writing this to test deploy !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
         function renderWorkoutplans() {
                 $("#workouts").empty();
                 $.ajax({
@@ -168,9 +84,9 @@ $(document).ready(function () {
                                                         placeholder: 'Distance'
                                                 })
 
-                                                const cardioLabel = $("<input>", {
+                                                const cardioLabel = $("<label>", {
                                                         type: 'checkbox',
-                                                        id: `Cardio-${workout._id}`,
+                                                        for: `Cardio-${workout._id}`,
                                                         placeholder: 'Is it cardio?'
                                                         
                                                 })
@@ -214,16 +130,16 @@ $(document).ready(function () {
 
                 $("#workouts").on('click', ".update-btn", (e) => {
                         e.preventDefault();
-                        const workoutId = e.target.dataset.id;
-                        console.log(workoutId);
-                        const name = $(`#name-${workoutId}`).val().trim();
-                        const type = parseInt($(`#type-${workoutId}`).val());
-                        const weight = parseInt($(`#weight-${workoutId}`).val());
-                        const sets = parseInt($(`#sets-${workoutId}`).val());
-                        const reps = parseInt($(`#reps-${workoutId}`).val());
-                        const duration = parseInt($(`#duration-${workoutId}`).val());
-                        const distance = parseInt($(`#distance-${workoutId}`).val());
-                        const isCardio = $(`#cardio-${workoutId}`).is(":checked");
+                        const exerciseId = e.target.dataset.id;
+                        console.log(exerciseId);
+                        const name = $(`#name-${exersiceId}`).val().trim();
+                        const type = parseInt($(`#type-${exersiceId}`).val());
+                        const weight = parseInt($(`#weight-${exersiceId}`).val());
+                        const sets = parseInt($(`#sets-${exersiceId}`).val());
+                        const reps = parseInt($(`#reps-${exersiceId}`).val());
+                        const duration = parseInt($(`#duration-${exersiceId}`).val());
+                        const distance = parseInt($(`#distance-${exersiceId}`).val());
+                        const isCardio = $(`#cardio-${exersiceId}`).is(":checked");
 
                         const newObj = {
                                 name, type, weight, sets, reps, duration, distance, isCardio, workoutId
@@ -236,8 +152,8 @@ $(document).ready(function () {
                                 method: "POST",
                                 data: newObj
                         })
-                                .then(dbWorkout => {
-                                        console.log(dbWorkout)
+                                .then(dbexercise  => {
+                                        console.log(dbexercise)
                                         renderWorkoutplans();
                                 })
                                 .catch(err => {

@@ -4,15 +4,14 @@ const Schema = mongoose.Schema;
 
 
 const WorkoutSchema = new Schema({
-
-name: String,
+    name: String,
     exercise: [{
     type: Schema.Types.ObjectId,
-    ref: 'exercise'
+    ref: 'Exercise'
 }]
 
     })
 
-const Workout = mongoose.model("workout", WorkoutSchema)
+const Workout = mongoose.model("Workout", WorkoutSchema)
 
 module.exports = Workout; 

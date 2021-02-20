@@ -131,9 +131,11 @@ app.get('/api/workout', (req, res) => {
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
-  console.log(err)
-  res.send(err);
-});
+    .catch(err => {
+      console.log(err)
+      res.send(err);
+    })
+})
 
 //View Exercise 
 
@@ -147,18 +149,6 @@ app.get('/api/exercise', (req, res) => {
       res.send(err);
     })
 })
-
-//View Days
-// app.get('/api/days', (req, res) => {
-//   db.Day.find({})
-//     .then(dbDay => {
-//       res.json(dbDay)
-//     })
-//     .catch(err => {
-//       console.log(err)
-//       res.send(err);
-//     })
-// })
 
 //Populated Exercises 
 app.get('/populatedExercise', (req, res) => {
@@ -174,17 +164,6 @@ app.get('/populatedExercise', (req, res) => {
 
 })
 
-//Post to Days
-// app.post('/api/days', ({ body }, res) => {
-//   db.Workout.create(body)
-//   .then(dbDay => {
-//     res.json(dbDay)
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     res.send(err);
-//   })
-// })
 
 //Create Workout
 app.post("/api/workout", ({ body }, res) => {

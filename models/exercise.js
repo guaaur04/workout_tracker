@@ -15,6 +15,6 @@ isCardio: Boolean
 
     })
 
-const Exercise = mongoose.model("exercise", ExerciseSchema)
+const Exercise = mongoose.model("Exercise", ExerciseSchema)
 
 module.exports = Exercise; 
