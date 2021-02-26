@@ -4,7 +4,7 @@ $(document).ready(function () {
         function renderWorkoutplans() {
                 $("#workouts").empty();
                 $.ajax({
-                        url: "/api/exercise",
+                        url: "/api/workout",
                         method: "GET",
                 })
                         .then(dbWorkout => {
@@ -37,6 +37,7 @@ $(document).ready(function () {
                                                 const newForm = $("<form>", {
                                                         id: workout._id
                                                 })
+
                                                 const newBtn = $("<button>", {
                                                         text: 'Add Exercise',
                                                         class: 'update-btn',
@@ -130,8 +131,8 @@ $(document).ready(function () {
 
                 $("#workouts").on('click', ".update-btn", (e) => {
                         e.preventDefault();
-                        const exerciseId = e.target.dataset.id;
-                        console.log(exerciseId);
+                        const workoutId = e.target.dataset.id;
+                        console.log(workoutId);
                         const name = $(`#name-${exersiceId}`).val().trim();
                         const type = parseInt($(`#type-${exersiceId}`).val());
                         const weight = parseInt($(`#weight-${exersiceId}`).val());

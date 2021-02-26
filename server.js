@@ -180,13 +180,14 @@ app.post("/api/workout", ({ body }, res) => {
 
 //Create Exercise 
 app.post('/api/exercise', ({ body }, res) => {
-  console.log(body);
+  console.log(req.body);
   db.Exercise.create(body)
     .then(dbExercise => {
       // console.log(dbExercise._id)
-      db.Workout.findByIdAndUpdate(body.id, { $push: { exercise: dbExercise._id } })
-        // db.Workout.findById("6023517cb51af13030a8e2bd")
-        .then(dbWOrkout => res.send(dbWOrkout))
+      // db.Exercise.findByIdAndUpdate(body.id, { $push: { exercise: dbExercise._id } })
+      db.Workout.findOneAndUpdate({_id:req.body.workoutId}, { $push: { exercise: dbExercise._id } })
+        // db.Exercise.findById("6023517cb51af13030a8e2bd")
+        .then(dbWorkout => res.send(dbWorkout))
     })
 
     .catch(err => res.json(err))
