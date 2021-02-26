@@ -183,10 +183,9 @@ app.post('/api/exercise', ({ body }, res) => {
   console.log(req.body);
   db.Exercise.create(body)
     .then(dbExercise => {
-      // console.log(dbExercise._id)
+      console.log(dbExercise._id)
       // db.Exercise.findByIdAndUpdate(body.id, { $push: { exercise: dbExercise._id } })
       db.Workout.findOneAndUpdate({_id:req.body.workoutId}, { $push: { exercise: dbExercise._id } })
-        // db.Exercise.findById("6023517cb51af13030a8e2bd")
         .then(dbWorkout => res.send(dbWorkout))
     })
 

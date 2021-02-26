@@ -12,7 +12,7 @@ $(document).ready(function () {
                                 dbWorkout.forEach((workout) => {
                                         // Make a new div each workout
                                         const newDiv = $('<div>', {
-                                                style: 'width: 25%; border: 2px solid blue;',
+                                                style: ' border: 2px solid blue; width: calc(100% / 3); margin: auto;',
 
                                         })
                                         const title = $("<h3>", {
@@ -131,8 +131,8 @@ $(document).ready(function () {
 
                 $("#workouts").on('click', ".update-btn", (e) => {
                         e.preventDefault();
-                        const workoutId = e.target.dataset.id;
-                        console.log(workoutId);
+                        const exersiceId = e.target.dataset.id;
+                        console.log(exersiceId);
                         const name = $(`#name-${exersiceId}`).val().trim();
                         const type = parseInt($(`#type-${exersiceId}`).val());
                         const weight = parseInt($(`#weight-${exersiceId}`).val());
@@ -143,7 +143,7 @@ $(document).ready(function () {
                         const isCardio = $(`#cardio-${exersiceId}`).is(":checked");
 
                         const newObj = {
-                                name, type, weight, sets, reps, duration, distance, isCardio, workoutId
+                                name, type, weight, sets, reps, duration, distance, isCardio, Id
                         }
 
                         console.log(newObj);

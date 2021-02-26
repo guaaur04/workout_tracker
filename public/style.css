@@ -9,18 +9,21 @@ nav {
   height: 8rem;
 }
 
-.brand-logo{
-font-size: 100px;
+nav .brand-logo{
+font-size: 2.5em;
 justify-content: center;
+margin-top: .75em;
 }
 
 h1 {
   margin-left: 15rem;
   
 }
+
+
 .row{
 justify-content: flex;
-display: flex;
+/* display: flex; */
 }
 
 .workout-card{
@@ -31,16 +34,13 @@ display: flex;
     background-color:#A3C4BC;
     font-size: 12px;
     color: black; 
+    -webkit-box-shadow: 5px 5px 15px 5px #969696; 
+    box-shadow: 5px 5px 15px 5px #575656;
     }
-
-
-
-  div {
-   justify-content: space-between;
-  }
 
   li {
     justify-content: space-evenly;
+    border-bottom: 2px solid black;
   }
 
   .input-field input:focus + label {
