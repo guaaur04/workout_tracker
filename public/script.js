@@ -131,16 +131,16 @@ $(document).ready(function () {
 
                 $("#workouts").on('click', ".update-btn", (e) => {
                         e.preventDefault();
-                        const exersiceId = e.target.dataset.id;
-                        console.log(exersiceId);
-                        const name = $(`#name-${exersiceId}`).val().trim();
-                        const type = parseInt($(`#type-${exersiceId}`).val());
-                        const weight = parseInt($(`#weight-${exersiceId}`).val());
-                        const sets = parseInt($(`#sets-${exersiceId}`).val());
-                        const reps = parseInt($(`#reps-${exersiceId}`).val());
-                        const duration = parseInt($(`#duration-${exersiceId}`).val());
-                        const distance = parseInt($(`#distance-${exersiceId}`).val());
-                        const isCardio = $(`#cardio-${exersiceId}`).is(":checked");
+                        const exerciseId = e.target.dataset.id;
+                        console.log(exerciseId);
+                        const name = $(`#name-${exerciseId}`).val().trim();
+                        const type = parseInt($(`#type-${exerciseId}`).val());
+                        const weight = parseInt($(`#weight-${exerciseId}`).val());
+                        const sets = parseInt($(`#sets-${exerciseId}`).val());
+                        const reps = parseInt($(`#reps-${exerciseId}`).val());
+                        const duration = parseInt($(`#duration-${exerciseId}`).val());
+                        const distance = parseInt($(`#distance-${exerciseId}`).val());
+                        const isCardio = $(`#cardio-${exerciseId}`).is(":checked");
 
                         const newObj = {
                                 name, type, weight, sets, reps, duration, distance, isCardio, Id

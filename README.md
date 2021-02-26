@@ -15,11 +15,16 @@ I should also be able to track the name, type, weight, sets, reps, and duration 
 If the exercise is a cardio exercise, I should be able to track my distance traveled.
 
 ## Technology
-Handlebars and Materialize CSS, Express web server, MongoDB, Mongoose, deployed with Heroku, 
+* Handlebars 
+* Materialize  
+* Express web server
+* MongoDB
+* Mongoose
+* Deployed with Heroku 
 
 ## Features
 
-Add and edit exercises in your online workout planner. 
+With this Workout Planner, the user is able to create workouts which include your corresponding exercies of choice. View your workout plans, as well as create and delete your exercise.
 
 ## License
 
